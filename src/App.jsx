@@ -4,7 +4,7 @@
  *         — ej autentiserad omdirigeras till /login
  */
 
-import { BrowserRouter, Routes, Route, Navigate, Link } from 'react-router-dom'
+import { HashRouter, Routes, Route, Navigate, Link } from 'react-router-dom'
 import { AuthProvider, useAuth } from './context/AuthContext.jsx'
 import ProtectedRoute from './components/auth/ProtectedRoute.jsx'
 import LoginForm from './components/auth/LoginForm.jsx'
@@ -32,7 +32,7 @@ function NavBar() {
 
 function AppRoutes() {
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <HashRouter>
       <NavBar />
       <main className="main-content">
         <Routes>
@@ -52,7 +52,7 @@ function AppRoutes() {
           <Route path="*" element={<Navigate to="/files" replace />} />
         </Routes>
       </main>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 

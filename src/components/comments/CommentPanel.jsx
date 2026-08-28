@@ -22,8 +22,10 @@ export default function CommentPanel({ fileId, token, currentUserId, socket }) {
   useEffect(() => {
     if (!socket) return
 
-    function onNewComment({ comment }) {
-      setComments(prev => [...prev, comment])
+    function onNewComment(comment) {
+      // Backend emittar kommentaren direkt (ej insvept i objekt)
+      // Skippa om vi redan lagt till den optimistiskt
+      setComments(prev => prev.some(c => c.id === comment.id) ? prev : [...prev, comment])
     }
     function onCommentDeleted({ commentId }) {
       setComments(prev => prev.filter(c => c.id !== commentId))
