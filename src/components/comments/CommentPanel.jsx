@@ -42,19 +42,22 @@ export default function CommentPanel({ fileId, token, currentUserId, socket }) {
     e.preventDefault()
     if (!text.trim()) return
     try {
-      await addComment(token, fileId, line, text)
+      const comment = await addComment(token, fileId, line, text)
+      // Lägg till direkt i listan — vänta inte på socket-event
+      setComments(prev => [...prev, comment])
       setLine(1)
       setText('')
-    } catch {
-      // tyst fel — socket event uppdaterar listan om lyckat
+    } catch (err) {
+      console.error('Kunde inte lägga till kommentar:', err)
     }
   }
 
   async function handleDelete(commentId) {
     try {
       await deleteComment(token, commentId)
-    } catch {
-      // tyst fel
+      setComments(prev => prev.filter(c => c.id !== commentId))
+    } catch (err) {
+      console.error('Kunde inte ta bort kommentar:', err)
     }
   }
 

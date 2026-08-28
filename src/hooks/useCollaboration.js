@@ -11,7 +11,7 @@ export function useCollaboration(fileId) {
   const setOnRemoteChange = useCallback((fn) => { onRemoteChangeRef.current = fn }, [])
   useEffect(() => {
     if (!fileId || !token) return
-    const socket = io(import.meta.env.VITE_API_URL || '', { auth: { token }, transports: ['websocket'] })
+    const socket = io(import.meta.env.VITE_API_URL || '', { auth: { token } })
     socketRef.current = socket
     socket.on('connect', () => { setConnected(true); socket.emit('join-file', { fileId }) })
     socket.on('disconnect', () => { setConnected(false); setActiveUsers([]); setRemoteCursors({}) })
