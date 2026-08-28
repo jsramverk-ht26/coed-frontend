@@ -38,8 +38,7 @@ export default function CommentPanel({ fileId, token, currentUserId, socket }) {
     }
   }, [socket])
 
-  async function handleSubmit(e) {
-    e.preventDefault()
+  async function handleSubmit() {
     if (!text.trim()) return
     try {
       const comment = await addComment(token, fileId, line, text)
@@ -86,7 +85,7 @@ export default function CommentPanel({ fileId, token, currentUserId, socket }) {
         ))}
       </ul>
 
-      <form onSubmit={handleSubmit} className="comment-form">
+      <div className="comment-form">
         <div className="field">
           <label htmlFor="comment-line">Rad</label>
           <input
@@ -106,8 +105,8 @@ export default function CommentPanel({ fileId, token, currentUserId, socket }) {
             rows={3}
           />
         </div>
-        <button type="submit">Lägg till</button>
-      </form>
+        <button type="button" onClick={handleSubmit}>Lägg till</button>
+      </div>
     </div>
   )
 }
