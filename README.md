@@ -1,34 +1,35 @@
 # coed-frontend
 
-Frontend for en kollaborativ kodeditor, skapad som kursreferens for DV1677 HT26 vid Blekinge Tekniska Hogskola. Byggd med React 18, Vite och Monaco Editor och stoder realtidsredigering, kommentarer och autentisering.
+Frontend till en kollaborativ kodeditor, skapad som kursreferens för DV1677 HT26 vid Blekinge Tekniska Högskola.
+Byggd med React 18, Vite och Monaco Editor — stödjer realtidsredigering, kommentarer och autentisering.
 
 Live: https://jsramverk-ht26.github.io/coed-frontend/
 
-## Krav och demonstration
+## Projektkrav som demonstreras
 
 | Krav | Demonstration | Var i koden |
 |------|---------------|-------------|
-| Krav 1 | Login/registrering, skyddade rutter | `src/context/AuthContext.jsx`, `src/components/auth/` |
-| Krav 2 | Realtidsredigering, cursors, aktiva anvandare | `src/hooks/useCollaboration.js` |
-| Krav 4 | Radbaserade kommentarer | `src/components/comments/CommentPanel.jsx` |
-| Krav 6 | Monaco Editor, syntax highlighting, autosave | `src/pages/EditorPage.jsx` |
+| Krav 1 – Autentisering | Inloggning, registrering, skyddade rutter | `src/context/AuthContext.jsx`, `src/components/auth/` |
+| Krav 2 – Realtid | Realtidsredigering, cursors, aktiva användare | `src/hooks/useCollaboration.js` |
+| Krav 4 – Kommentarer | Radbaserade kommentarer i realtid | `src/components/comments/CommentPanel.jsx` |
+| Krav 6 – Kodeditor | Monaco Editor, syntax highlighting, autosave | `src/pages/EditorPage.jsx` |
 
-## Kor lokalt
+## Kör lokalt
 
 ```bash
 cp .env.example .env
-# Satt VITE_API_URL i .env
+# Sätt VITE_API_URL i .env
 npm install
 npm run dev
 ```
 
-## Miljovariabler
+## Miljövariabler
 
 | Variabel | Beskrivning |
 |----------|-------------|
-| `VITE_API_URL` | URL till backend-API |
+| `VITE_API_URL` | URL till backend-API (t.ex. `http://localhost:3001`) |
 
-## Driftsattning
+## Driftsättning
 
-GitHub Actions bygger och driftsatter till GitHub Pages vid push till `main`.
-Satt `VITE_API_URL` som repo-hemlighet under Settings > Secrets and variables > Actions.
+GitHub Actions bygger och driftsätter till GitHub Pages vid push till `main`.
+Sätt `VITE_API_URL` som repo-hemlighet under Settings → Secrets and variables → Actions.

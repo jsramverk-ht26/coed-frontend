@@ -26,7 +26,7 @@ export default function CommentPanel({ fileId, token, currentUserId, socket }) {
       setComments(prev => [...prev, comment])
     }
     function onCommentDeleted({ commentId }) {
-      setComments(prev => prev.filter(c => c._id !== commentId))
+      setComments(prev => prev.filter(c => c.id !== commentId))
     }
 
     socket.on('new-comment', onNewComment)
@@ -67,12 +67,12 @@ export default function CommentPanel({ fileId, token, currentUserId, socket }) {
           <li className="muted">Inga kommentarer ännu.</li>
         )}
         {comments.map(c => (
-          <li key={c._id} className="comment-item">
+          <li key={c.id} className="comment-item">
             <span>Rad {c.line} — {c.username}: {c.text}</span>
             {c.userId === currentUserId && (
               <button
                 className="btn-icon btn-danger-sm"
-                onClick={() => handleDelete(c._id)}
+                onClick={() => handleDelete(c.id)}
                 title="Ta bort kommentar"
                 type="button"
               >
