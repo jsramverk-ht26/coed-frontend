@@ -27,7 +27,7 @@ export async function getFile(token, id) {
 }
 
 export async function updateFileContent(token, id, content) {
-  const res = await fetch(BASE + `/api/files/${id}`, {
+  const res = await fetch(BASE + `/api/files/${id}/content`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
     body: JSON.stringify({ content })
