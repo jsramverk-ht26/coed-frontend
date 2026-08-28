@@ -1,0 +1,118 @@
+/* coed — Global CSS (minimal light theme) */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { height: 100%; }
+body { font-family: system-ui, -apple-system, sans-serif; background: #fff; color: #222; font-size: 14px; line-height: 1.5; }
+a { color: #0066cc; }
+
+/* Navbar */
+.navbar { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 1rem; border-bottom: 1px solid #ddd; }
+.nav-brand { font-weight: 700; }
+.nav-links { display: flex; gap: 1rem; font-size: 0.85rem; }
+.btn-link { background: none; border: none; cursor: pointer; font-size: 0.85rem; color: #666; padding: 0; }
+.btn-link:hover { color: #c00; }
+
+/* Layout */
+.main-content { padding: 1rem; }
+.editor-layout { display: flex; height: calc(100vh - 40px); }
+.editor-sidebar { width: 220px; border-right: 1px solid #ddd; padding: 0.75rem; overflow-y: auto; flex-shrink: 0; display: flex; flex-direction: column; gap: 0.75rem; }
+.editor-main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+.editor-statusbar { padding: 0.25rem 0.5rem; border-top: 1px solid #ddd; font-size: 0.75rem; color: #666; display: flex; justify-content: space-between; }
+
+/* Sidebar elements */
+.file-name { font-size: 0.9rem; font-weight: 600; word-break: break-all; margin-bottom: 0.5rem; }
+.file-info { display: flex; flex-direction: column; gap: 0.35rem; }
+.btn-back { display: block; margin-bottom: 0.75rem; text-align: left; }
+.connection-status { font-size: 0.75rem; margin-top: 0.5rem; color: #666; }
+.connection-status.connected, .connected { color: #2a7a2a; }
+.connection-status.disconnected, .disconnected { color: #999; }
+
+/* Buttons */
+button { cursor: pointer; padding: 0.25rem 0.5rem; border: 1px solid #ccc; background: #f5f5f5; border-radius: 3px; font-size: 0.85rem; font-family: inherit; }
+button:hover { background: #e8e8e8; }
+.btn-primary { background: #0066cc; color: #fff; border-color: #005bb5; }
+.btn-primary:hover { background: #005bb5; }
+.btn-secondary { background: #f5f5f5; color: #444; }
+.btn-danger { background: #c00; color: #fff; border-color: #a00; }
+.btn-danger:hover { background: #a00; }
+.btn-primary:disabled, .btn-secondary:disabled, .btn-danger:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-icon { background: none; border: none; color: #999; padding: 0.2rem 0.3rem; }
+.btn-icon:hover { color: #222; background: none; }
+.btn-danger-sm { color: #c00 !important; }
+.sort-btn { background: none; border: none; cursor: pointer; color: #666; font-size: 0.85rem; padding: 0; }
+
+/* Forms */
+.field { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.75rem; }
+label { font-size: 0.8rem; color: #666; }
+input[type="text"], input[type="email"], input[type="password"], input[type="number"], textarea {
+  padding: 0.4rem 0.6rem; border: 1px solid #ccc; border-radius: 3px; font-size: 0.85rem; font-family: inherit; outline: none;
+}
+input:focus, textarea:focus { border-color: #0066cc; }
+textarea { resize: vertical; }
+.field-error { font-size: 0.8rem; color: #c00; }
+.error-banner { background: #fff0f0; border-left: 3px solid #c00; padding: 0.5rem 0.75rem; color: #c00; margin-bottom: 0.75rem; font-size: 0.85rem; }
+.success-banner { background: #f0fff0; border-left: 3px solid #2a7a2a; padding: 0.5rem 0.75rem; color: #2a7a2a; margin-bottom: 0.75rem; font-size: 0.85rem; }
+
+/* Save status */
+.save-status--saved { color: #2a7a2a; }
+.save-status--saving { color: #888; }
+.save-status--error { color: #c00; }
+
+/* Comments */
+.comment-panel { font-size: 0.85rem; }
+.comment-panel h3 { font-size: 0.78rem; text-transform: uppercase; color: #666; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+.comment-list { list-style: none; margin-bottom: 0.75rem; }
+.comment-item { padding: 0.4rem 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
+.comment-form { border-top: 1px solid #eee; padding-top: 0.5rem; }
+
+/* Auth */
+.auth-container { max-width: 380px; margin: 7vh auto; padding: 2rem; border: 1px solid #ddd; border-radius: 4px; }
+.auth-container h1 { font-size: 1.2rem; margin-bottom: 1.5rem; }
+.auth-container form { display: flex; flex-direction: column; gap: 0.75rem; }
+.auth-link { margin-top: 1rem; font-size: 0.85rem; color: #666; text-align: center; }
+
+/* File list */
+.file-list-page { padding: 2rem; max-width: 1000px; margin: 0 auto; }
+.file-list-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.file-list-header h1 { font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.05em; }
+.file-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.file-table th { text-align: left; padding: 0.4rem 0.75rem; border-bottom: 1px solid #ddd; color: #666; font-size: 0.78rem; text-transform: uppercase; }
+.file-table td { padding: 0.5rem 0.75rem; border-bottom: 1px solid #eee; vertical-align: middle; }
+.file-row { cursor: pointer; }
+.file-row:hover { background: #f9f9f9; }
+.file-actions { display: flex; gap: 0.25rem; }
+.empty-state { text-align: center; padding: 4rem; color: #999; }
+
+/* Badges */
+.badge { display: inline-block; font-size: 0.7rem; padding: 0.1rem 0.35rem; border-radius: 3px; background: #eee; font-weight: 600; }
+.badge--lang { background: #f0f0ff; color: #555; }
+.badge--shared { background: #e8f5e9; color: #2a7a2a; }
+
+/* Modal */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.4); display: flex; align-items: center; justify-content: center; z-index: 200; }
+.modal { background: #fff; border: 1px solid #ddd; border-radius: 4px; padding: 1.5rem; width: 400px; max-width: 95vw; }
+.modal--wide { width: 480px; }
+.modal h2 { font-size: 1rem; margin-bottom: 1rem; }
+.modal p { color: #666; margin-bottom: 0.75rem; font-size: 0.9rem; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 1rem; }
+.share-form { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+.share-form input { flex: 1; }
+.share-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+.share-list li { display: flex; align-items: center; justify-content: space-between; padding: 0.4rem 0.5rem; background: #f9f9f9; border-radius: 3px; }
+
+/* Active users */
+.active-users h3 { font-size: 0.7rem; text-transform: uppercase; color: #999; letter-spacing: 0.05em; margin-bottom: 0.4rem; }
+.active-users ul { list-style: none; }
+.active-user { display: flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; }
+.user-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* Profile */
+.profile-page { max-width: 520px; margin: 2rem auto; padding: 0 1.5rem; }
+.profile-page h1 { font-size: 1rem; margin-bottom: 1.5rem; color: #666; text-transform: uppercase; }
+.profile-section { border: 1px solid #ddd; border-radius: 4px; padding: 1.25rem; margin-bottom: 1rem; }
+.profile-section h2 { font-size: 0.8rem; margin-bottom: 1rem; color: #666; text-transform: uppercase; }
+
+/* Misc */
+.loading { padding: 2rem; color: #999; text-align: center; }
+.muted { color: #999; }
+.remote-cursor { border-left: 2px solid currentColor; }
