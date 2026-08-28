@@ -32,7 +32,7 @@ function NavBar() {
 
 function AppRoutes() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <NavBar />
       <main className="main-content">
         <Routes>
