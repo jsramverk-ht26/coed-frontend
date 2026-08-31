@@ -21,7 +21,7 @@ export default function ShareFilePanel({ file, onClose }) {
   const [shareError, setShareError] = useState('')
   const [shareSuccess, setShareSuccess] = useState('')
 
-  const isOwner = file.owner_id === user.id
+  const isOwner = file.ownerId === user.id
 
   useEffect(() => {
     if (!isOwner) return
@@ -31,8 +31,7 @@ export default function ShareFilePanel({ file, onClose }) {
       .finally(() => setLoadingShares(false))
   }, [file.id, token, isOwner])
 
-  async function handleShare(e) {
-    e.preventDefault()
+  async function handleShare() {
     if (!username.trim()) return
 
     setSharing(true)
@@ -80,17 +79,17 @@ export default function ShareFilePanel({ file, onClose }) {
 
         {isOwner && (
           <>
-            <form onSubmit={handleShare} className="share-form">
+            <div className="share-form">
               <input
                 type="text"
                 value={username}
                 onChange={e => { setUsername(e.target.value); setShareError(''); setShareSuccess('') }}
                 placeholder="Användarnamn att bjuda in"
               />
-              <button type="submit" className="btn-primary" disabled={sharing}>
+              <button type="button" className="btn-primary" disabled={sharing} onClick={handleShare}>
                 {sharing ? 'Delar…' : 'Dela'}
               </button>
-            </form>
+            </div>
 
             <h3>Delade med</h3>
             {loadingShares ? (
