@@ -70,8 +70,8 @@ export default function ShareFilePanel({ file, onClose }) {
   }
 
   return (
-    <div className="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="share-title">
-      <div className="modal modal--wide">
+    <div className="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="share-title" onClick={e => e.stopPropagation()}>
+      <div className="modal modal--wide" onClick={e => e.stopPropagation()}>
         <h2 id="share-title">Dela: {file.name}</h2>
 
         {shareError   && <p className="error-banner">{shareError}</p>}
@@ -98,18 +98,22 @@ export default function ShareFilePanel({ file, onClose }) {
               <p className="muted">Inte delad med någon ännu.</p>
             ) : (
               <ul className="share-list">
-                {shares.map(u => (
-                  <li key={u.id}>
+                {shares.map(u => {
+                  const uid = u.id ?? u.userId
+                  return (
+                  <li key={uid}>
                     <span>{u.username}</span>
                     <button
                       className="btn-icon btn-danger-sm"
-                      onClick={() => handleRemove(u.id)}
+                      onClick={() => handleRemove(uid)}
                       title="Ta bort delning"
+                      type="button"
                     >
                       ✕
                     </button>
                   </li>
-                ))}
+                  )
+                })}
               </ul>
             )}
           </>
